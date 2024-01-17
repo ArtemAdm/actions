@@ -8,6 +8,7 @@ runs:
         ls -lah
         touch 123.txt
         mkdir test11
+        ls -lah
       shell: bash
     - run: |
         # fail on error
