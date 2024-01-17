@@ -19,7 +19,7 @@ runs:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - id: log-report
-      run: echo "$(cat /var/log/${{ inputs.file }}") >> $GITHUB_OUTPUT
+      run: echo "$(cat /var/log/${{ inputs.file }})" >> $GITHUB_OUTPUT
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
