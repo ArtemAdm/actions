@@ -7,7 +7,7 @@ runs:
     - run: |
         ls -lah
         touch 123.txt
-        mkdit test11
+        mkdir test11
       shell: bash
     - run: |
         # fail on error
