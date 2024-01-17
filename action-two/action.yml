@@ -1,23 +1,25 @@
-name: 'Hello World'
+name: 'Action two'
 description: 'Greet someone'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
     required: true
     default: 'World'
+  file:  # id of input
+    description: 'log file name'
+    required: true
+    default: 'auth.log'
 outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+  report-logs:
+    description: "Reports in logs"
+    value: ${{ steps.log-report.outputs.report-logs }}
 runs:
   using: "composite"
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+    - id: log-report
+      run: cat "/var/logs/${{ inputs.file }}" >> $GITHUB_OUTPUT
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-    - run: goodbye.sh
       shell: bash
